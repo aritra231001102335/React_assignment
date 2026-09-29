@@ -1,0 +1,243 @@
+:root {
+  font-family: Arial, sans-serif;
+  color: #282d2b;
+  background: #f2f5f0;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+#root {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  min-height: 100vh;
+  border: 0;
+  text-align: left;
+  display: block;
+  box-sizing: border-box;
+}
+button {
+  font: inherit;
+}
+.students-app {
+  max-width: 1240px;
+  margin: auto;
+  padding: 0 6%;
+}
+.app-header {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dce2d9;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: #778279;
+}
+.brand {
+  font:
+    bold 17px Arial,
+    sans-serif;
+  letter-spacing: 0;
+  color: #273d35;
+  text-decoration: none;
+}
+.brand span {
+  color: #e2644a;
+}
+.term {
+  margin-left: auto;
+  margin-right: 48px;
+}
+.student-total {
+  color: #273d35;
+}
+.student-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding: 68px 0 48px;
+}
+.kicker,
+.app-footer {
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  color: #758278;
+}
+.student-heading h1 {
+  font:
+    56px/0.98 Georgia,
+    serif;
+  letter-spacing: 0;
+  margin: 16px 0 0;
+}
+.student-heading em {
+  font-weight: 400;
+  color: #e2644a;
+}
+.heading-note {
+  font:
+    13px/1.6 Arial,
+    sans-serif;
+  color: #758278;
+  margin: 0 0 5px;
+}
+.student-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 0;
+  border-top: 1px solid #dce2d9;
+  border-bottom: 1px solid #dce2d9;
+  color: #758278;
+  font:
+    12px Arial,
+    sans-serif;
+}
+.sort-button {
+  border: 0;
+  background: none;
+  color: #273d35;
+  font-weight: bold;
+  cursor: pointer;
+}
+.sort-button > span {
+  margin-left: 12px;
+  font-weight: normal;
+  color: #758278;
+}
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  padding: 23px 0 66px;
+}
+.student-card {
+  min-width: 0;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid #e2e7df;
+  box-shadow: 0 8px 24px #263d3510;
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #98a29a;
+}
+.cgpa {
+  font-size: 22px;
+  color: #293f36;
+}
+.cgpa small {
+  font-size: 9px;
+  color: #758278;
+}
+.student-photo {
+  width: 100%;
+  height: 168px;
+  object-fit: cover;
+  object-position: center 40%;
+  margin: 14px 0 12px;
+  background: #e9ece6;
+  filter: saturate(0.76);
+}
+.student-card h2 {
+  font:
+    22px Georgia,
+    serif;
+  color: #293f36;
+  margin: 0 0 5px;
+}
+.roll-number {
+  font-size: 10px;
+  color: #929d95;
+  letter-spacing: 0.8px;
+  margin: 0;
+}
+.student-card dl {
+  border-top: 1px solid #e8ebe6;
+  margin: 17px 0 0;
+  padding-top: 13px;
+}
+.student-card dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 0;
+  font-size: 11px;
+}
+.student-card dt {
+  color: #87928a;
+}
+.student-card dd {
+  margin: 0;
+  color: #35493f;
+  text-align: right;
+}
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-top: 1px solid #dce2d9;
+}
+@media (max-width: 760px) {
+  .student-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .student-heading {
+    padding: 50px 0 34px;
+  }
+  .student-heading h1 {
+    font-size: 48px;
+  }
+  .term {
+    display: none;
+  }
+  .student-total {
+    margin-left: auto;
+  }
+}
+@media (max-width: 480px) {
+  .student-grid {
+    grid-template-columns: 1fr;
+  }
+  .student-card {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    column-gap: 15px;
+  }
+  .student-photo {
+    grid-row: 2/5;
+    width: 90px;
+    height: 112px;
+    margin: 10px 0;
+  }
+  .card-top {
+    grid-column: 1/-1;
+  }
+  .student-card dl {
+    grid-column: 2;
+    margin-top: 8px;
+  }
+  .student-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .student-heading h1 {
+    font-size: 43px;
+  }
+  .app-footer {
+    font-size: 8px;
+  }
+  .sort-button > span {
+    display: none;
+  }
+}
