@@ -1,7 +1,16 @@
 :root {
+  --page-bg: #f4f5ef;
+  --ink: #263b36;
+  --muted: #71807a;
+  --line: #dce3dc;
+  --accent: #d45f38;
+  --panel: #17443f;
+  --panel-ink: #f2f3e9;
+  --panel-muted: #b8cdc4;
+  --panel-line: rgb(226 241 232 / 22%);
   font-family: Arial, sans-serif;
-  color: #27342e;
-  background: #f5f7f2;
+  color: var(--ink);
+  background: var(--page-bg);
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
 }
@@ -26,27 +35,27 @@ body {
 }
 .weather-header {
   height: 73px;
-  border-bottom: 1px solid #dfe4dc;
+  border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 9px;
   letter-spacing: 1.1px;
-  color: #77827a;
+  color: var(--muted);
 }
 .brand {
   font:
     bold 14px Arial,
     sans-serif;
   letter-spacing: 1px;
-  color: #27342e;
+  color: var(--ink);
 }
 .brand span {
   font-weight: normal;
-  color: #9ca69d;
+  color: #89958e;
 }
 .location-mark {
-  color: #b84e32;
+  color: var(--accent);
 }
 .weather-hero {
   display: flex;
@@ -58,7 +67,7 @@ body {
   font-size: 9px;
   font-weight: bold;
   letter-spacing: 1.5px;
-  color: #818b82;
+  color: var(--muted);
   margin: 0 0 14px;
 }
 .weather-title h1 {
@@ -68,7 +77,7 @@ body {
   margin: 0 0 18px;
 }
 .weather-title h1 em {
-  color: #d66a36;
+  color: var(--accent);
   font-weight: 400;
 }
 .weather-title > p:last-child {
@@ -82,12 +91,12 @@ body {
 .city-search > span {
   display: block;
   font-size: 10px;
-  color: #78847b;
+  color: var(--muted);
 }
 .city-search > div {
   display: flex;
   margin: 7px 0;
-  border-bottom: 1px solid #78847b;
+  border-bottom: 1px solid #9ba9a1;
 }
 .city-search input {
   height: 42px;
@@ -98,24 +107,25 @@ body {
   font:
     17px Georgia,
     serif;
-  color: #27342e;
+  color: var(--ink);
 }
 .city-search button {
   border: 0;
   background: transparent;
-  color: #cf6334;
+  color: var(--accent);
   font-size: 20px;
   cursor: pointer;
 }
 .weather-message {
   margin: 0 0 15px;
   padding: 11px 14px;
-  background: #fff1db;
-  color: #875b24;
+  background: #f8e8d9;
+  color: #85482f;
   font-size: 11px;
 }
 .conditions {
-  background: #e9eee8;
+  background: var(--panel);
+  color: var(--panel-ink);
   padding: 32px 5% 0;
 }
 .conditions-main {
@@ -131,6 +141,9 @@ body {
   letter-spacing: 0;
   margin: 0;
 }
+.conditions .eyebrow {
+  color: var(--panel-muted);
+}
 .conditions-main h2 sup {
   font-size: 39px;
   vertical-align: top;
@@ -141,7 +154,7 @@ body {
   font:
     15px Georgia,
     serif;
-  color: #68776d;
+  color: #d3e0d8;
   margin: 12px 0 0;
 }
 .weather-art {
@@ -149,7 +162,7 @@ body {
   height: 150px;
   display: grid;
   place-items: center;
-  color: #e5a137;
+  color: #efb75d;
 }
 .weather-art > span {
   font:
@@ -165,13 +178,13 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 20px 0 23px;
-  border-top: 1px solid #cdd6ce;
+  border-top: 1px solid var(--panel-line);
 }
 .condition-stats > div {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border-right: 1px solid #cdd6ce;
+  border-right: 1px solid var(--panel-line);
   padding: 0 20px;
 }
 .condition-stats > div:first-child {
@@ -183,19 +196,19 @@ body {
 .condition-stats span {
   font-size: 8px;
   letter-spacing: 1px;
-  color: #78857b;
+  color: var(--panel-muted);
 }
 .condition-stats strong {
   font:
     20px Georgia,
     serif;
-  color: #2f4036;
+  color: var(--panel-ink);
 }
 .condition-stats small {
   font:
     10px Arial,
     sans-serif;
-  color: #78857b;
+  color: var(--panel-muted);
 }
 .weather-footer {
   display: flex;
@@ -203,14 +216,14 @@ body {
   margin-top: 18px;
   font-size: 9px;
   letter-spacing: 0.9px;
-  color: #818c83;
+  color: var(--muted);
 }
 .loader {
   display: inline-block;
   width: 12px;
   height: 12px;
   border: 2px solid #d4ddd4;
-  border-top-color: #d66a36;
+  border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }

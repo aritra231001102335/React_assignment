@@ -60,12 +60,12 @@ body {
     sans-serif;
 }
 .hero {
-  min-height: 580px;
+  min-height: 560px;
   padding: 66px 0 82px;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.82fr);
   align-items: center;
-  gap: 8%;
+  gap: clamp(48px, 9vw, 132px);
   border-bottom: 1px solid #dfe4db;
 }
 .hero-copy {
@@ -111,34 +111,57 @@ body {
 .text-link span {
   color: #d65b3e;
 }
-.portrait-wrap {
+.identity-panel {
   position: relative;
   height: 450px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #cad5cb;
+  color: #203c34;
 }
-.portrait-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 35%;
-  filter: saturate(0.82);
+.identity-mark {
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #203c34;
+  border-radius: 50%;
+  font-size: 28px;
+  letter-spacing: 2px;
 }
-.portrait-caption,
-.portrait-index {
-  position: absolute;
-  bottom: 16px;
-  color: white;
+.identity-details p,
+.identity-contact a,
+.identity-index {
   font:
-    700 9px Arial,
+    700 10px Arial,
     sans-serif;
   letter-spacing: 1.2px;
-  text-shadow: 0 1px 8px #26392f;
 }
-.portrait-caption {
-  left: 16px;
+.identity-details p {
+  margin: 0 0 8px;
 }
-.portrait-index {
-  right: 16px;
+.identity-details p:last-child {
+  color: #53665b;
+}
+.identity-contact {
+  display: grid;
+  gap: 10px;
+}
+.identity-contact a {
+  width: fit-content;
+  border-bottom: 1px solid #82978a;
+  padding-bottom: 5px;
+  letter-spacing: 0;
+  font-size: 12px;
+  text-transform: none;
+}
+.identity-index {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  color: #53665b;
 }
 .section-grid {
   display: grid;
@@ -231,6 +254,17 @@ body {
     13px Arial,
     sans-serif;
 }
+.phone-link {
+  display: block;
+  width: fit-content;
+  margin-top: 18px;
+  color: #53665b;
+  font:
+    13px Arial,
+    sans-serif;
+  border-bottom: 1px solid #9ba79d;
+  padding-bottom: 6px;
+}
 .contact-button span {
   color: #c4ea83;
 }
@@ -272,7 +306,7 @@ body {
   .hero h1 {
     font-size: 58px;
   }
-  .portrait-wrap {
+  .identity-panel {
     height: 390px;
   }
   .section-grid {
