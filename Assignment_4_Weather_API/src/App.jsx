@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 const initialWeather = {
   name: "Kolkata",
   main: { temp: 29, feels_like: 33, humidity: 72 },
@@ -23,31 +22,29 @@ export default function App() {
   const [cityInput, setCityInput] = useState("Kolkata");
   const [city, setCity] = useState("Kolkata");
   const [weather, setWeather] = useState(initialWeather);
-  const [loading, setLoading] = useState(Boolean(API_KEY));
-  const [error, setError] = useState(
-    API_KEY
-      ? ""
-      : "Add your OpenWeatherMap key to .env to load live weather. Showing sample conditions.",
-  );
+  const [loading, setLoading] = useState(true);
+  const [hasLiveWeather, setHasLiveWeather] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    if (!API_KEY) return;
     const controller = new AbortController();
     async function loadWeather() {
       try {
         const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`,
+          `/api/weather?city=${encodeURIComponent(city)}`,
           { signal: controller.signal },
         );
-        if (!response.ok)
+        const result = await response.json().catch(() => null);
+        if (!response.ok || !result)
           throw new Error(
-            response.status === 404
-              ? "City not found. Check the spelling and try again."
-              : "Weather could not be loaded. Check your connection and API key.",
+            result?.message || "Weather could not be loaded. Try again later.",
           );
-        setWeather(await response.json());
+        setWeather(result);
+        setHasLiveWeather(true);
       } catch (reason) {
-        if (reason.name !== "AbortError") setError(reason.message);
+        if (reason.name !== "AbortError") {
+          setError(reason.message || "Weather could not be loaded. Try again later.");
+        }
       } finally {
         if (!controller.signal.aborted) setLoading(false);
       }
@@ -62,6 +59,7 @@ export default function App() {
     if (nextCity && nextCity !== city) {
       setLoading(true);
       setError("");
+      setHasLiveWeather(false);
       setCity(nextCity);
     }
   }
@@ -120,7 +118,7 @@ export default function App() {
             <p className="description">{current.description}</p>
           </div>
           <div className="weather-art">
-            {API_KEY && current.icon ? (
+            {hasLiveWeather && current.icon ? (
               <img
                 src={`https://openweathermap.org/img/wn/${current.icon}@2x.png`}
                 alt={current.description}
@@ -148,11 +146,11 @@ export default function App() {
           <div>
             <span>DAYLIGHT</span>
             <strong>
-              {API_KEY
+              {hasLiveWeather
                 ? clockTime(weather.sys.sunrise, weather.timezone)
                 : "06:03"}{" "}
               <small>/</small>{" "}
-              {API_KEY
+              {hasLiveWeather
                 ? clockTime(weather.sys.sunset, weather.timezone)
                 : "17:47"}
             </strong>

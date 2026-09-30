@@ -1,16 +1,21 @@
-# React + Vite
+# Assignment 4: Weather API
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+The Vite app requests weather from `/api/weather`. On Vercel, that route runs as a serverless function and reads the OpenWeather key on the server, so the key is not included in the browser bundle.
 
-Currently, two official plugins are available:
+## Vercel setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Set the project's Root Directory to `Assignment_4_Weather_API`. In **Settings → Environment Variables**, add `OPENWEATHER_API_KEY` with the OpenWeather API key for Production (and Preview if needed), then redeploy. Do not use the `VITE_` prefix; Vite exposes variables with that prefix to browser code.
 
-## React Compiler
+## Local development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Create an ignored `.env.local` file in this directory with:
 
-## Expanding the Oxlint configuration
+```env
+OPENWEATHER_API_KEY=your_openweathermap_api_key_here
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Run the app through Vercel's local development server so the serverless function is available:
+
+```sh
+npx vercel dev
+```
