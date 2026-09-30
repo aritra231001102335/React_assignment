@@ -1,6 +1,11 @@
 import { createContext, useContext, useReducer, useState } from "react";
 import "./App.css";
 
+const currencyFormatter = new Intl.NumberFormat("en-IN", {
+  style: "currency",
+  currency: "INR",
+});
+
 const products = [
   {
     id: 1,
@@ -96,7 +101,7 @@ function ProductList() {
               </p>
               <h2>{product.name}</h2>
             </div>
-            <strong>${product.price}</strong>
+            <strong>{currencyFormatter.format(product.price)}</strong>
           </div>
           <button
             type="button"
@@ -160,7 +165,7 @@ function CartPanel() {
               />
               <div className="cart-product">
                 <strong>{product.name}</strong>
-                <span>${product.price} each</span>
+                <span>{currencyFormatter.format(product.price)} each</span>
                 <div className="quantity">
                   <button
                     type="button"
@@ -221,19 +226,19 @@ function CartPanel() {
       <div className="totals">
         <div>
           <span>Subtotal</span>
-          <strong>${subtotal.toFixed(2)}</strong>
+          <strong>{currencyFormatter.format(subtotal)}</strong>
         </div>
         <div>
           <span>Discount</span>
-          <strong>−${discount.toFixed(2)}</strong>
+          <strong>−{currencyFormatter.format(discount)}</strong>
         </div>
         <div>
           <span>GST · 18%</span>
-          <strong>${gst.toFixed(2)}</strong>
+          <strong>{currencyFormatter.format(gst)}</strong>
         </div>
         <div className="grand-total">
           <span>Total</span>
-          <strong>${total.toFixed(2)}</strong>
+          <strong>{currencyFormatter.format(total)}</strong>
         </div>
       </div>
       <button type="button" className="checkout-button" disabled={count === 0}>
